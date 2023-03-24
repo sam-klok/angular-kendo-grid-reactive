@@ -2,6 +2,7 @@ Playing with angular and kendo grid export to Excle.
 Let's convert from static to reactive.
 Old, static app: 
     https://github.com/sam-klok/angular-kendo-grid
+    https://stackblitz.com/edit/angular-ddwvng
     
 This would be new, reactive app: 
     https://github.com/sam-klok/angular-kendo-grid-reactive
@@ -14,8 +15,19 @@ Based on examples:
 https://www.telerik.com/kendo-angular-ui/components/excel-export/
 
 
-Major steps explaining how I created this project:
+=========== Conversion to reactive.
+1. Add products service
+>ng g s products
 
+2. installing RxJS
+>npm install rxjs
+>npm i rxjs-compat
+
+Based on tutorial: C:\Repos\pluralsight-angular-2-getting-started-Deborah-Kurata\11\demos\demo\APM
+
+2. Add products.json file (kind of API) with json array of products [{},{},..]
+
+=========== Major steps explaining how I created this project:
 1. Create project:
 >ng new angular-kendo-grid
 
