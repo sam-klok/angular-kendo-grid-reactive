@@ -1,7 +1,10 @@
 Playing with angular and kendo grid export to Excle. 
 Let's convert from static to reactive.
-Old, static app: https://github.com/sam-klok/angular-kendo-grid
-This would be new, reactive app. 
+Old, static app: 
+    https://github.com/sam-klok/angular-kendo-grid
+    
+This would be new, reactive app: 
+    https://github.com/sam-klok/angular-kendo-grid-reactive
 
 Thank you,
 Serge Klokov
