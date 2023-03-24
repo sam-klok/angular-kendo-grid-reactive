@@ -1,0 +1,77 @@
+/**-----------------------------------------------------------------------------------------
+* Copyright © 2021 Progress Software Corporation. All rights reserved.
+* Licensed under commercial license. See LICENSE.md in the project root for more information
+*-------------------------------------------------------------------------------------------*/
+import { Directive, Input, HostBinding, HostListener } from '@angular/core';
+import * as i0 from "@angular/core";
+import * as i1 from "./selection.service";
+/**
+ * @hidden
+ */
+export class SelectableDirective {
+    constructor(selectionService) {
+        this.checkboxes = { enabled: false };
+        // @HostBinding('attr.offset-index')
+        // @Input() public offsetIndex: number;
+        this.multipleSelection = false;
+        this.selectionService = selectionService;
+    }
+    get focusedClassName() {
+        return this.selectionService.isFocused(this.index);
+    }
+    get selectedClassName() {
+        return !this.checkboxes.enabled && this.selectionService.isSelected(this.index);
+    }
+    onClick(event) {
+        event.stopPropagation();
+        this.selectionService.lastClickedIndex = this.index;
+        if (this.checkboxes.enabled && !this.checkboxes.checkOnClick) {
+            return;
+        }
+        if (this.multipleSelection) {
+            if (this.selectionService.isSelected(this.index)) {
+                this.selectionService.deselect(this.index);
+            }
+            else {
+                this.selectionService.add(this.index);
+            }
+        }
+        else {
+            this.selectionService.change(this.index);
+        }
+    }
+}
+SelectableDirective.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: SelectableDirective, deps: [{ token: i1.SelectionService }], target: i0.ɵɵFactoryTarget.Directive });
+SelectableDirective.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "12.0.0", version: "12.2.16", type: SelectableDirective, selector: "[kendoDropDownsSelectable]", inputs: { index: "index", checkboxes: "checkboxes", height: "height", multipleSelection: "multipleSelection" }, host: { listeners: { "click": "onClick($event)" }, properties: { "attr.index": "this.index", "style.height.px": "this.height", "style.minHeight.px": "this.height", "class.k-focus": "this.focusedClassName", "class.k-selected": "this.selectedClassName" } }, ngImport: i0 });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: SelectableDirective, decorators: [{
+            type: Directive,
+            args: [{
+                    selector: '[kendoDropDownsSelectable]'
+                }]
+        }], ctorParameters: function () { return [{ type: i1.SelectionService }]; }, propDecorators: { index: [{
+                type: HostBinding,
+                args: ['attr.index']
+            }, {
+                type: Input
+            }], checkboxes: [{
+                type: Input
+            }], height: [{
+                type: HostBinding,
+                args: ['style.height.px']
+            }, {
+                type: HostBinding,
+                args: ['style.minHeight.px']
+            }, {
+                type: Input
+            }], multipleSelection: [{
+                type: Input
+            }], focusedClassName: [{
+                type: HostBinding,
+                args: ['class.k-focus']
+            }], selectedClassName: [{
+                type: HostBinding,
+                args: ['class.k-selected']
+            }], onClick: [{
+                type: HostListener,
+                args: ['click', ['$event']]
+            }] } });

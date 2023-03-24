@@ -1,0 +1,22 @@
+/**-----------------------------------------------------------------------------------------
+* Copyright © 2021 Progress Software Corporation. All rights reserved.
+* Licensed under commercial license. See LICENSE.md in the project root for more information
+*-------------------------------------------------------------------------------------------*/
+import { ColumnComponent } from '../../columns/column.component';
+import { CompositeFilterDescriptor } from '@progress/kendo-data-query';
+import * as i0 from "@angular/core";
+/**
+ * @hidden
+ */
+export declare class FilterCellComponent {
+    column: ColumnComponent;
+    get filter(): CompositeFilterDescriptor;
+    set filter(value: CompositeFilterDescriptor);
+    private _templateContext;
+    private _filter;
+    get templateContext(): any;
+    get hasTemplate(): boolean;
+    get isFilterable(): boolean;
+    static ɵfac: i0.ɵɵFactoryDeclaration<FilterCellComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<FilterCellComponent, "[kendoGridFilterCell]", never, { "column": "column"; "filter": "filter"; }, {}, never, never>;
+}

@@ -1,0 +1,45 @@
+/**-----------------------------------------------------------------------------------------
+* Copyright © 2021 Progress Software Corporation. All rights reserved.
+* Licensed under commercial license. See LICENSE.md in the project root for more information
+*-------------------------------------------------------------------------------------------*/
+import { Pipe } from '@angular/core';
+import { getter } from '@progress/kendo-common';
+import { isString, isNullOrEmptyString } from '../../utils';
+import * as i0 from "@angular/core";
+import * as i1 from "@progress/kendo-angular-intl";
+const FORMAT_REGEX = /\{\d+:?/;
+/**
+ * @hidden
+ */
+export class FieldAccessorPipe {
+    constructor(intlService) {
+        this.intlService = intlService;
+    }
+    transform(dataItem, fieldName, format) {
+        if (!isNullOrEmptyString(fieldName)) {
+            const value = getter(fieldName)(dataItem);
+            if (!isNullOrEmptyString(format)) {
+                return this.formatValue(format, value);
+            }
+            return value;
+        }
+        return dataItem;
+    }
+    formatValue(format, value) {
+        const intl = this.intlService;
+        if (isString(format) && format.match(FORMAT_REGEX)) {
+            return intl.format(format, value);
+        }
+        return intl.toString(value, format);
+    }
+}
+FieldAccessorPipe.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: FieldAccessorPipe, deps: [{ token: i1.IntlService }], target: i0.ɵɵFactoryTarget.Pipe });
+FieldAccessorPipe.ɵpipe = i0.ɵɵngDeclarePipe({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: FieldAccessorPipe, name: "valueOf", pure: false });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: FieldAccessorPipe, decorators: [{
+            type: Pipe,
+            args: [{
+                    // eslint-disable-next-line @angular-eslint/pipe-prefix
+                    name: 'valueOf',
+                    pure: false
+                }]
+        }], ctorParameters: function () { return [{ type: i1.IntlService }]; } });

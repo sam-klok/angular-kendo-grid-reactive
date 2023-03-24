@@ -1,0 +1,51 @@
+/**-----------------------------------------------------------------------------------------
+* Copyright © 2021 Progress Software Corporation. All rights reserved.
+* Licensed under commercial license. See LICENSE.md in the project root for more information
+*-------------------------------------------------------------------------------------------*/
+import { ChangeDetectorRef } from '@angular/core';
+import { LocalizationService } from '@progress/kendo-angular-l10n';
+import { PagerContextChanges, PagerContextService } from './pager-context.service';
+import { PagerElementComponent } from './pager-element.component';
+import * as i0 from "@angular/core";
+/**
+ * Displays numeric buttons to enable navigation between the pages.
+ */
+export declare class PagerNumericButtonsComponent extends PagerElementComponent {
+    protected pagerContext: PagerContextService;
+    numbersWrapClass: boolean;
+    /**
+     * The count of the displayed buttons.
+     *
+     * @type {number}
+     * @memberOf PagerNumericButtonsComponent
+     */
+    buttonCount: number;
+    /**
+     * @hidden
+     *
+     * @readonly
+     * @type {number[]}
+     * @memberOf PagerNumericButtonsComponent
+     */
+    get buttons(): number[];
+    /**
+     * @hidden
+     */
+    get end(): number;
+    /**
+     * @hidden
+     */
+    get start(): number;
+    constructor(localization: LocalizationService, cd: ChangeDetectorRef, pagerContext: PagerContextService);
+    /**
+     * @hidden
+     */
+    pageLabel(num: number): string;
+    /**
+     * @hidden
+     */
+    onSelectChange(e: Event): void;
+    protected onChanges({ total, skip, pageSize }: PagerContextChanges): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<PagerNumericButtonsComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<PagerNumericButtonsComponent, "kendo-pager-numeric-buttons", never, { "buttonCount": "buttonCount"; }, {}, never, never>;
+}

@@ -1,0 +1,45 @@
+/**-----------------------------------------------------------------------------------------
+* Copyright © 2021 Progress Software Corporation. All rights reserved.
+* Licensed under commercial license. See LICENSE.md in the project root for more information
+*-------------------------------------------------------------------------------------------*/
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { KForOf } from './for.directive';
+import { HeaderComponent } from './header.component';
+import { ViewComponent } from './view.component';
+import { EventsModule } from '@progress/kendo-angular-common';
+import * as i0 from "@angular/core";
+/**
+ * @hidden
+ *
+ * The exported package module.
+ *
+ * The package exports:
+ * - `HeaderComponent`&mdash;The component that renders the UI for vertical navigation.
+ * - `ViewComponent`&mdash;The component that renders the active Calendar view.
+ */
+export class CalendarCommonModule {
+}
+CalendarCommonModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: CalendarCommonModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
+CalendarCommonModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: CalendarCommonModule, declarations: [KForOf,
+        HeaderComponent,
+        ViewComponent], imports: [CommonModule, EventsModule], exports: [KForOf,
+        HeaderComponent,
+        ViewComponent] });
+CalendarCommonModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: CalendarCommonModule, imports: [[CommonModule, EventsModule]] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: CalendarCommonModule, decorators: [{
+            type: NgModule,
+            args: [{
+                    declarations: [
+                        KForOf,
+                        HeaderComponent,
+                        ViewComponent
+                    ],
+                    exports: [
+                        KForOf,
+                        HeaderComponent,
+                        ViewComponent
+                    ],
+                    imports: [CommonModule, EventsModule]
+                }]
+        }] });

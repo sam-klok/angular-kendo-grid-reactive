@@ -1,0 +1,24 @@
+/**-----------------------------------------------------------------------------------------
+* Copyright © 2021 Progress Software Corporation. All rights reserved.
+* Licensed under commercial license. See LICENSE.md in the project root for more information
+*-------------------------------------------------------------------------------------------*/
+import { detectDesktopBrowser, detectMobileOS } from "@progress/kendo-common";
+/**
+ * @hidden
+ *
+ * Returns true if the used browser is Safari.
+ */
+export const isSafari = (userAgent) => {
+    const desktopBrowser = detectDesktopBrowser(userAgent);
+    const mobileOS = detectMobileOS(userAgent);
+    return (desktopBrowser && desktopBrowser.safari) || (mobileOS && mobileOS.browser === 'mobilesafari');
+};
+/**
+ * @hidden
+ *
+ * Checks if input is Japanese IME
+ */
+export const isJapanese = (input) => {
+    const japaneseRegex = /[\u3000-\u303F]|[\u3040-\u309F]|[\u30A0-\u30FF]|[\uFF00-\uFFEF]|[\u4E00-\u9FAF]|[\u2605-\u2606]|[\u2190-\u2195]|\u203B/g;
+    return japaneseRegex.test(input);
+};

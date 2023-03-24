@@ -1,0 +1,40 @@
+/**-----------------------------------------------------------------------------------------
+* Copyright © 2021 Progress Software Corporation. All rights reserved.
+* Licensed under commercial license. See LICENSE.md in the project root for more information
+*-------------------------------------------------------------------------------------------*/
+import { Component, forwardRef } from '@angular/core';
+import { NumericTextBoxMessages } from './messages';
+import * as i0 from "@angular/core";
+import * as i1 from "@progress/kendo-angular-l10n";
+/**
+ * Custom component messages override default component messages.
+ */
+export class NumericTextBoxCustomMessagesComponent extends NumericTextBoxMessages {
+    constructor(service) {
+        super();
+        this.service = service;
+    }
+    get override() {
+        return true;
+    }
+}
+NumericTextBoxCustomMessagesComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: NumericTextBoxCustomMessagesComponent, deps: [{ token: i1.LocalizationService }], target: i0.ɵɵFactoryTarget.Component });
+NumericTextBoxCustomMessagesComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.16", type: NumericTextBoxCustomMessagesComponent, selector: "kendo-numerictextbox-messages", providers: [
+        {
+            provide: NumericTextBoxMessages,
+            useExisting: forwardRef(() => NumericTextBoxCustomMessagesComponent)
+        }
+    ], usesInheritance: true, ngImport: i0, template: ``, isInline: true });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: NumericTextBoxCustomMessagesComponent, decorators: [{
+            type: Component,
+            args: [{
+                    providers: [
+                        {
+                            provide: NumericTextBoxMessages,
+                            useExisting: forwardRef(() => NumericTextBoxCustomMessagesComponent)
+                        }
+                    ],
+                    selector: 'kendo-numerictextbox-messages',
+                    template: ``
+                }]
+        }], ctorParameters: function () { return [{ type: i1.LocalizationService }]; } });

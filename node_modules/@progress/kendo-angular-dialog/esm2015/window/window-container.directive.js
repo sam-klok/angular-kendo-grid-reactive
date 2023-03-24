@@ -1,0 +1,30 @@
+/**-----------------------------------------------------------------------------------------
+* Copyright © 2021 Progress Software Corporation. All rights reserved.
+* Licensed under commercial license. See LICENSE.md in the project root for more information
+*-------------------------------------------------------------------------------------------*/
+import { Directive } from '@angular/core';
+import * as i0 from "@angular/core";
+import * as i1 from "./window-container.service";
+/**
+ * Provides an insertion point for the Windows which are created through the
+ * Window service ([see example]({% slug api_dialog_windowservice %}#toc-open)).
+ * Created Windows will be mounted after that element.
+ *
+ * @example
+ * ```html-no-run
+ * <div kendoWindowContainer></div>
+ * ```
+ */
+export class WindowContainerDirective {
+    constructor(container, service) {
+        service.container = container;
+    }
+}
+WindowContainerDirective.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: WindowContainerDirective, deps: [{ token: i0.ViewContainerRef }, { token: i1.WindowContainerService }], target: i0.ɵɵFactoryTarget.Directive });
+WindowContainerDirective.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "12.0.0", version: "12.2.16", type: WindowContainerDirective, selector: "[kendoWindowContainer]", ngImport: i0 });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: WindowContainerDirective, decorators: [{
+            type: Directive,
+            args: [{
+                    selector: '[kendoWindowContainer]'
+                }]
+        }], ctorParameters: function () { return [{ type: i0.ViewContainerRef }, { type: i1.WindowContainerService }]; } });

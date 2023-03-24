@@ -1,0 +1,40 @@
+/**-----------------------------------------------------------------------------------------
+* Copyright © 2021 Progress Software Corporation. All rights reserved.
+* Licensed under commercial license. See LICENSE.md in the project root for more information
+*-------------------------------------------------------------------------------------------*/
+import { Component, forwardRef } from '@angular/core';
+import { DateInputMessages } from './messages';
+import * as i0 from "@angular/core";
+import * as i1 from "@progress/kendo-angular-l10n";
+/**
+ * Custom component messages override default component messages ([see example]({% slug globalization_dateinputs %}#toc-custom-messages)).
+ */
+export class DateInputCustomMessagesComponent extends DateInputMessages {
+    constructor(service) {
+        super();
+        this.service = service;
+    }
+    get override() {
+        return true;
+    }
+}
+DateInputCustomMessagesComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: DateInputCustomMessagesComponent, deps: [{ token: i1.LocalizationService }], target: i0.ɵɵFactoryTarget.Component });
+DateInputCustomMessagesComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.16", type: DateInputCustomMessagesComponent, selector: "kendo-dateinput-messages", providers: [
+        {
+            provide: DateInputMessages,
+            useExisting: forwardRef(() => DateInputCustomMessagesComponent)
+        }
+    ], usesInheritance: true, ngImport: i0, template: ``, isInline: true });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: DateInputCustomMessagesComponent, decorators: [{
+            type: Component,
+            args: [{
+                    providers: [
+                        {
+                            provide: DateInputMessages,
+                            useExisting: forwardRef(() => DateInputCustomMessagesComponent)
+                        }
+                    ],
+                    selector: 'kendo-dateinput-messages',
+                    template: ``
+                }]
+        }], ctorParameters: function () { return [{ type: i1.LocalizationService }]; } });

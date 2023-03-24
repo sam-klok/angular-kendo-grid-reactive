@@ -1,0 +1,53 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "name": "kendo-schematics",
+  "schematics": {
+    "test-component": {
+      "description": "Generates a component containing Kendo Angular Grid component",
+      "schema": "./collection/component/schema.json",
+      "factory": "./collection/component/index#testComponent",
+      "hidden": true
+    },
+    "ng-add": {
+      "description": "Register Kendo Angular components",
+      "schema": "./collection/ngAdd/schema.json",
+      "factory": "./collection/ngAdd/index#ngAdd"
+    },
+    "grid": {
+      "progress:scaffold-category": "page",
+      "description": "Generates a component containing Kendo Angular Grid component.",
+      "factory": "./collection/grid/index#grid",
+      "schema": "./collection/grid/schema.json"
+    },
+    "scheduler": {
+      "progress:scaffold-category": "page",
+      "description": "Generates a component containing Kendo Angular Scheduler component.",
+      "factory": "./collection/scheduler/index#scheduler",
+      "schema": "./collection/scheduler/schema.json"
+    },
+    "categorical-chart": {
+      "progress:scaffold-category": "page",
+      "description": "Generates a component containing Kendo Angular Chart component.",
+      "factory": "./collection/charts/categorical/index#chart",
+      "schema": "./collection/charts/categorical/schema.json"
+    },
+    "circular-chart": {
+      "progress:scaffold-category": "page",
+      "description": "Generates a component containing Kendo Angular Pie or Donut Chart component.",
+      "factory": "./collection/charts/circular/index#chart",
+      "schema": "./collection/charts/circular/schema.json"
+    },
+    "scatter-chart": {
+      "progress:scaffold-category": "page",
+      "description": "Generates a component containing Kendo Angular Scatter Chart component.",
+      "factory": "./collection/charts/scatter/index#chart",
+      "schema": "./collection/charts/scatter/schema.json"
+    },
+    "stock-chart": {
+        "progress:scaffold-category": "page",
+        "description": "Generates a component containing Kendo Angular Stock Chart component.",
+        "factory": "./collection/charts/stock/index#chart",
+        "schema": "./collection/charts/stock/schema.json"
+      }
+  }
+}

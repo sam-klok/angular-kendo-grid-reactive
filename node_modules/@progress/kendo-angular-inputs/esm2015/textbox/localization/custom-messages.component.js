@@ -1,0 +1,40 @@
+/**-----------------------------------------------------------------------------------------
+* Copyright © 2021 Progress Software Corporation. All rights reserved.
+* Licensed under commercial license. See LICENSE.md in the project root for more information
+*-------------------------------------------------------------------------------------------*/
+import { Component, forwardRef } from '@angular/core';
+import { TextBoxMessages } from './messages';
+import * as i0 from "@angular/core";
+import * as i1 from "@progress/kendo-angular-l10n";
+/**
+ * Custom component messages override default component messages.
+ */
+export class TextBoxCustomMessagesComponent extends TextBoxMessages {
+    constructor(service) {
+        super();
+        this.service = service;
+    }
+    get override() {
+        return true;
+    }
+}
+TextBoxCustomMessagesComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: TextBoxCustomMessagesComponent, deps: [{ token: i1.LocalizationService }], target: i0.ɵɵFactoryTarget.Component });
+TextBoxCustomMessagesComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.16", type: TextBoxCustomMessagesComponent, selector: "kendo-textbox-messages", providers: [
+        {
+            provide: TextBoxMessages,
+            useExisting: forwardRef(() => TextBoxCustomMessagesComponent)
+        }
+    ], usesInheritance: true, ngImport: i0, template: ``, isInline: true });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: TextBoxCustomMessagesComponent, decorators: [{
+            type: Component,
+            args: [{
+                    providers: [
+                        {
+                            provide: TextBoxMessages,
+                            useExisting: forwardRef(() => TextBoxCustomMessagesComponent)
+                        }
+                    ],
+                    selector: 'kendo-textbox-messages',
+                    template: ``
+                }]
+        }], ctorParameters: function () { return [{ type: i1.LocalizationService }]; } });

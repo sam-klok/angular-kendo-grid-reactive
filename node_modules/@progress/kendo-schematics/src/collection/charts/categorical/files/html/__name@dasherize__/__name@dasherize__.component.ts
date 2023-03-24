@@ -1,0 +1,21 @@
+import { Component } from '@angular/core';<% if (dataSource === "Example" || dataSource === "Mock Data") {%>
+import { seriesData } from './data';<% } %><% if (legend && legendTitleText) {%>
+import { LegendTitle } from '@progress/kendo-angular-charts';<% } %>
+
+@Component({
+	selector: '<%= dasherize(name) %>-component',
+	templateUrl: './<%= dasherize(name) %>.component.html',
+	<% if (!inlineStyle) {%>styleUrls: ['./<%= dasherize(name) %>.component.css']<% } else {%>styles: [``]<% } %>
+})
+export class <%= classify(name) %>Component {<% if (dataSource === "Example" || dataSource === "Mock Data") { %>
+    public seriesData: any[] = seriesData;
+<% } else if (dataSource === "Existing App Data") { %>
+    // TODO: Connect to your data.
+    public seriesData: any[] = [];
+<% } %><% if (legend && legendTitleText) {%>
+    public legendTitle: LegendTitle = {<% if (legendTitleText) {%>
+        text: '<%=legendTitleText%>',<% } %><% if (legendTitleAlign) {%>
+        align: '<%=legendTitleAlign%>',<% } %><% if (legendTitlePosition) {%>
+        position: '<%=legendTitlePosition%>'<% } %>
+    };<% } %>
+}

@@ -1,0 +1,69 @@
+/**-----------------------------------------------------------------------------------------
+* Copyright © 2021 Progress Software Corporation. All rights reserved.
+* Licensed under commercial license. See LICENSE.md in the project root for more information
+*-------------------------------------------------------------------------------------------*/
+import { ComponentMessages } from '@progress/kendo-angular-l10n';
+import * as i0 from "@angular/core";
+/**
+ * @hidden
+ */
+export declare class Messages extends ComponentMessages {
+    /**
+     * The title of the **Toggle** button of the DateTimePicker.
+     */
+    toggle: string;
+    /**
+     * The text of the **Date** tab in the popup header of the DateTimePicker.
+     */
+    dateTab: string;
+    /**
+     * The label of the **Date** tab in the popup header of the DateTimePicker.
+     */
+    dateTabLabel: string;
+    /**
+     * The text of the **Time** tab in the popup header of the DateTimePicker.
+     */
+    timeTab: string;
+    /**
+     * The label of the **Time** tab in the popup header of the DateTimePicker.
+     */
+    timeTabLabel: string;
+    /**
+     * The text of the **Accept** button in the popup footer of the DateTimePicker.
+     */
+    accept: string;
+    /**
+     * The label of the **Accept** button in the popup footer of the DateTimePicker.
+     */
+    acceptLabel: string;
+    /**
+     * The text of the **Cancel** button in the popup footer of the DateTimePicker.
+     */
+    cancel: string;
+    /**
+     * The label of the **Cancel** button in the popup footer of the DateTimePicker.
+     */
+    cancelLabel: string;
+    /**
+     * The **Today** button text in the header of the Calendar.
+     */
+    today: string;
+    /**
+     * The text of the **Now** button in the popup header of the TimePicker.
+     */
+    now: string;
+    /**
+     * The label of the **Now** button in the popup header of the TimePicker.
+     */
+    nowLabel: string;
+    /**
+     * The title of the **Prev** button in the header of the Classic Calendar.
+     */
+    prevButtonTitle: string;
+    /**
+     * The title of the **Next** button in the header of the Classic Calendar.
+     */
+    nextButtonTitle: string;
+    static ɵfac: i0.ɵɵFactoryDeclaration<Messages, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<Messages, "kendo-datetimepicker-messages-base", never, { "toggle": "toggle"; "dateTab": "dateTab"; "dateTabLabel": "dateTabLabel"; "timeTab": "timeTab"; "timeTabLabel": "timeTabLabel"; "accept": "accept"; "acceptLabel": "acceptLabel"; "cancel": "cancel"; "cancelLabel": "cancelLabel"; "today": "today"; "now": "now"; "nowLabel": "nowLabel"; "prevButtonTitle": "prevButtonTitle"; "nextButtonTitle": "nextButtonTitle"; }, {}, never>;
+}

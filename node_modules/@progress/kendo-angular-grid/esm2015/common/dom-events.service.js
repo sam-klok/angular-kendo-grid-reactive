@@ -1,0 +1,27 @@
+/**-----------------------------------------------------------------------------------------
+* Copyright © 2021 Progress Software Corporation. All rights reserved.
+* Licensed under commercial license. See LICENSE.md in the project root for more information
+*-------------------------------------------------------------------------------------------*/
+import { Injectable, EventEmitter } from '@angular/core';
+import * as i0 from "@angular/core";
+/**
+ * @hidden
+ */
+export class DomEventsService {
+    constructor() {
+        this.cellClick = new EventEmitter();
+        this.cellMousedown = new EventEmitter();
+        this.cellMouseup = new EventEmitter();
+        this.click = new EventEmitter();
+        this.keydown = new EventEmitter();
+        this.focus = new EventEmitter();
+        this.focusIn = new EventEmitter();
+        this.focusOut = new EventEmitter();
+        this.windowBlur = new EventEmitter();
+    }
+}
+DomEventsService.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: DomEventsService, deps: [], target: i0.ɵɵFactoryTarget.Injectable });
+DomEventsService.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: DomEventsService });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: DomEventsService, decorators: [{
+            type: Injectable
+        }] });

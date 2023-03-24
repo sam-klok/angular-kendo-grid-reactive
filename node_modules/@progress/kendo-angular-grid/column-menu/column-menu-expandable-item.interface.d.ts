@@ -1,0 +1,15 @@
+/**-----------------------------------------------------------------------------------------
+* Copyright © 2021 Progress Software Corporation. All rights reserved.
+* Licensed under commercial license. See LICENSE.md in the project root for more information
+*-------------------------------------------------------------------------------------------*/
+/**
+ * The configuration option used to determine whether a column menu item is initially expanded.
+ * Can be set to the `columnChooser`, `filter`, and `setColumnPosition` [ColumnMenuSettings]({% slug api_grid_columnmenusettings %}) options.
+ */
+export interface ExpandableColumnMenuItem {
+    /**
+     * Used to determine whether an expandable column menu item is initially expanded.
+     * @default false
+     */
+    expanded: boolean;
+}

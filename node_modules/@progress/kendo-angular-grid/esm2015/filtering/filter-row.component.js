@@ -1,0 +1,103 @@
+/**-----------------------------------------------------------------------------------------
+* Copyright © 2021 Progress Software Corporation. All rights reserved.
+* Licensed under commercial license. See LICENSE.md in the project root for more information
+*-------------------------------------------------------------------------------------------*/
+import { Component, Input, HostBinding } from '@angular/core';
+import { replaceMessagePlaceholder } from '../utils';
+import * as i0 from "@angular/core";
+import * as i1 from "@progress/kendo-angular-l10n";
+import * as i2 from "./../common/column-info.service";
+import * as i3 from "./cell/filter-cell.component";
+import * as i4 from "@angular/common";
+import * as i5 from "../navigation/logical-cell.directive";
+/**
+ * @hidden
+ */
+export class FilterRowComponent {
+    constructor(localization, columnInfoService) {
+        this.localization = localization;
+        this.columnInfoService = columnInfoService;
+        this.columns = [];
+        this.groups = [];
+        this.filterRowClass = true;
+    }
+    addStickyStyles(column) {
+        const sticky = column.sticky ? this.columnInfoService.stickyColumnsStyles(column) : null;
+        return Object.assign(Object.assign({}, sticky), column.filterStyle);
+    }
+    filterLabel(column) {
+        const localizationMsg = this.localization.get('filterInputLabel') || '';
+        const columnName = column.title || column.field;
+        return replaceMessagePlaceholder(localizationMsg, 'columnName', columnName);
+    }
+}
+FilterRowComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: FilterRowComponent, deps: [{ token: i1.LocalizationService }, { token: i2.ColumnInfoService }], target: i0.ɵɵFactoryTarget.Component });
+FilterRowComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.16", type: FilterRowComponent, selector: "[kendoGridFilterRow]", inputs: { columns: "columns", filter: "filter", groups: "groups", detailTemplate: "detailTemplate", logicalRowIndex: "logicalRowIndex", lockedColumnsCount: "lockedColumnsCount" }, host: { properties: { "class.k-filter-row": "this.filterRowClass" } }, ngImport: i0, template: `
+        <td
+            [class.k-group-cell]="true"
+            *ngFor="let g of groups"
+            role="presentation">
+        </td>
+        <td
+            [class.k-hierarchy-cell]="true"
+            *ngIf="detailTemplate?.templateRef"
+            role="presentation">
+        </td>
+        <td *ngFor="let column of columns; let columnIndex = index"
+            [class.k-grid-header-sticky]="column.sticky"
+            [ngStyle]="addStickyStyles(column)"
+            [ngClass]="column.filterClass"
+            [attr.aria-label]="filterLabel($any(column))"
+            kendoGridFilterCell
+                [column]="$any(column)"
+                [filter]="filter"
+            kendoGridLogicalCell
+                [logicalRowIndex]="logicalRowIndex"
+                [logicalColIndex]="lockedColumnsCount + columnIndex"
+      ></td>
+    `, isInline: true, components: [{ type: i3.FilterCellComponent, selector: "[kendoGridFilterCell]", inputs: ["column", "filter"] }], directives: [{ type: i4.NgForOf, selector: "[ngFor][ngForOf]", inputs: ["ngForOf", "ngForTrackBy", "ngForTemplate"] }, { type: i4.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }, { type: i5.LogicalCellDirective, selector: "[kendoGridLogicalCell]", inputs: ["logicalColIndex", "logicalRowIndex", "logicalSlaveCell", "colIndex", "colSpan", "rowSpan", "groupItem", "dataRowIndex", "dataItem", "detailExpandCell", "headerLabelText"] }, { type: i4.NgStyle, selector: "[ngStyle]", inputs: ["ngStyle"] }, { type: i4.NgClass, selector: "[ngClass]", inputs: ["class", "ngClass"] }] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: FilterRowComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: '[kendoGridFilterRow]',
+                    template: `
+        <td
+            [class.k-group-cell]="true"
+            *ngFor="let g of groups"
+            role="presentation">
+        </td>
+        <td
+            [class.k-hierarchy-cell]="true"
+            *ngIf="detailTemplate?.templateRef"
+            role="presentation">
+        </td>
+        <td *ngFor="let column of columns; let columnIndex = index"
+            [class.k-grid-header-sticky]="column.sticky"
+            [ngStyle]="addStickyStyles(column)"
+            [ngClass]="column.filterClass"
+            [attr.aria-label]="filterLabel($any(column))"
+            kendoGridFilterCell
+                [column]="$any(column)"
+                [filter]="filter"
+            kendoGridLogicalCell
+                [logicalRowIndex]="logicalRowIndex"
+                [logicalColIndex]="lockedColumnsCount + columnIndex"
+      ></td>
+    `
+                }]
+        }], ctorParameters: function () { return [{ type: i1.LocalizationService }, { type: i2.ColumnInfoService }]; }, propDecorators: { columns: [{
+                type: Input
+            }], filter: [{
+                type: Input
+            }], groups: [{
+                type: Input
+            }], detailTemplate: [{
+                type: Input
+            }], logicalRowIndex: [{
+                type: Input
+            }], lockedColumnsCount: [{
+                type: Input
+            }], filterRowClass: [{
+                type: HostBinding,
+                args: ['class.k-filter-row']
+            }] } });

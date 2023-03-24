@@ -1,0 +1,25 @@
+<kendo-grid
+  [kendoGridBinding]="products"
+  [height]="400"
+  [group]="group"
+  [pageable]="true"
+  [pageSize]="10"
+>
+  <ng-template kendoGridToolbarTemplate>
+    <button type="button" kendoGridExcelCommand icon="file-excel">
+      Export to Excel
+    </button>
+  </ng-template>
+  <kendo-grid-column field="ProductID" title="Product ID" [width]="200"></kendo-grid-column>
+  <kendo-grid-column field="ProductName" title="Product Name"></kendo-grid-column>
+  <kendo-grid-column
+    field="Category.CategoryName"
+    title="Category"
+    [hidden]="true"
+  >
+  </kendo-grid-column>
+  <kendo-grid-excel
+    fileName="Products.xlsx"
+    [fetchData]="allData"
+  ></kendo-grid-excel>
+</kendo-grid>

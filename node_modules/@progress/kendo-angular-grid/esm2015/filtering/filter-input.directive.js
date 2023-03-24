@@ -1,0 +1,99 @@
+/**-----------------------------------------------------------------------------------------
+* Copyright © 2021 Progress Software Corporation. All rights reserved.
+* Licensed under commercial license. See LICENSE.md in the project root for more information
+*-------------------------------------------------------------------------------------------*/
+import { Directive, EventEmitter, Inject, Input, Self, ContentChild } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { debounceTime, filter } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { isChanged } from '../utils';
+import { isDocumentAvailable, KendoInput } from '@progress/kendo-angular-common';
+import * as i0 from "@angular/core";
+/**
+ * @hidden
+ */
+export class FilterInputDirective {
+    constructor(valueAccessors, ngZone, element, renderer) {
+        this.element = element;
+        this.renderer = renderer;
+        this.change = new EventEmitter();
+        this.composing = false;
+        this.filterDelay = 500;
+        this.changeRequests = new Subject();
+        this.accessor = valueAccessors[0];
+        ngZone.runOutsideAngular(() => {
+            const unsubscribeStart = renderer.listen(element.nativeElement, 'compositionstart', () => this.composing = true);
+            const unsubscribeEnd = renderer.listen(element.nativeElement, 'compositionend', () => this.composing = false);
+            this.unsubscribeEvents = () => {
+                unsubscribeStart();
+                unsubscribeEnd();
+            };
+        });
+    }
+    set value(value) {
+        this.accessor.writeValue(value);
+    }
+    set disabled(value) {
+        this.accessor.setDisabledState(value);
+    }
+    ngAfterViewInit() {
+        this.addAriaAttributes();
+        this.accessor.registerOnChange(x => this.filterDelay > 0 ?
+            this.changeRequests.next(x) :
+            this.change.emit(x));
+        this.subscribeChanges();
+    }
+    ngOnChanges(changes) {
+        if (isChanged('filterDelay', changes)) {
+            this.unsubscribeChanges();
+            this.subscribeChanges();
+        }
+    }
+    ngOnDestroy() {
+        this.unsubscribeChanges();
+        this.unsubscribeEvents();
+    }
+    subscribeChanges() {
+        this.changeRequestsSubscription = this.changeRequests
+            .pipe(debounceTime(this.filterDelay), filter(() => !this.composing))
+            .subscribe(x => this.change.emit(x));
+    }
+    unsubscribeChanges() {
+        if (this.changeRequestsSubscription) {
+            this.changeRequestsSubscription.unsubscribe();
+        }
+    }
+    addAriaAttributes() {
+        const ariaValue = this.columnLabel;
+        if (this.kendoInput && this.kendoInput.focusableId && isDocumentAvailable()) {
+            const focusableElement = this.element.nativeElement.querySelector(`#${this.kendoInput.focusableId}`) ||
+                this.element.nativeElement;
+            this.renderer.setAttribute(focusableElement, 'aria-label', ariaValue);
+        }
+        else {
+            this.renderer.setAttribute(this.element.nativeElement, 'aria-label', ariaValue);
+        }
+    }
+}
+FilterInputDirective.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: FilterInputDirective, deps: [{ token: NG_VALUE_ACCESSOR, self: true }, { token: i0.NgZone }, { token: i0.ElementRef }, { token: i0.Renderer2 }], target: i0.ɵɵFactoryTarget.Directive });
+FilterInputDirective.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "12.0.0", version: "12.2.16", type: FilterInputDirective, selector: "[kendoFilterInput]", inputs: { filterDelay: "filterDelay", columnLabel: "columnLabel", value: "value" }, queries: [{ propertyName: "kendoInput", first: true, predicate: KendoInput, descendants: true, static: true }], usesOnChanges: true, ngImport: i0 });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: FilterInputDirective, decorators: [{
+            type: Directive,
+            args: [{
+                    selector: '[kendoFilterInput]'
+                }]
+        }], ctorParameters: function () { return [{ type: undefined, decorators: [{
+                    type: Self
+                }, {
+                    type: Inject,
+                    args: [NG_VALUE_ACCESSOR]
+                }] }, { type: i0.NgZone }, { type: i0.ElementRef }, { type: i0.Renderer2 }]; }, propDecorators: { kendoInput: [{
+                type: ContentChild,
+                args: [KendoInput, { static: true }]
+            }], filterDelay: [{
+                type: Input
+            }], columnLabel: [{
+                type: Input
+            }], value: [{
+                type: Input
+            }] } });

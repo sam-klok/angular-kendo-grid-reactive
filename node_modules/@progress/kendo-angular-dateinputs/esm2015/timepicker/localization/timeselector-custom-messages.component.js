@@ -1,0 +1,42 @@
+/**-----------------------------------------------------------------------------------------
+* Copyright © 2021 Progress Software Corporation. All rights reserved.
+* Licensed under commercial license. See LICENSE.md in the project root for more information
+*-------------------------------------------------------------------------------------------*/
+import { Component, forwardRef } from '@angular/core';
+import { TimePickerMessages } from './messages';
+import * as i0 from "@angular/core";
+import * as i1 from "@progress/kendo-angular-l10n";
+/**
+ * @hidden
+ *
+ * Custom component messages override default component messages.
+ */
+export class TimeSelectorCustomMessagesComponent extends TimePickerMessages {
+    constructor(service) {
+        super();
+        this.service = service;
+    }
+    get override() {
+        return true;
+    }
+}
+TimeSelectorCustomMessagesComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: TimeSelectorCustomMessagesComponent, deps: [{ token: i1.LocalizationService }], target: i0.ɵɵFactoryTarget.Component });
+TimeSelectorCustomMessagesComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.16", type: TimeSelectorCustomMessagesComponent, selector: "kendo-timeselector-messages", providers: [
+        {
+            provide: TimePickerMessages,
+            useExisting: forwardRef(() => TimeSelectorCustomMessagesComponent)
+        }
+    ], usesInheritance: true, ngImport: i0, template: ``, isInline: true });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: TimeSelectorCustomMessagesComponent, decorators: [{
+            type: Component,
+            args: [{
+                    providers: [
+                        {
+                            provide: TimePickerMessages,
+                            useExisting: forwardRef(() => TimeSelectorCustomMessagesComponent)
+                        }
+                    ],
+                    selector: 'kendo-timeselector-messages',
+                    template: ``
+                }]
+        }], ctorParameters: function () { return [{ type: i1.LocalizationService }]; } });

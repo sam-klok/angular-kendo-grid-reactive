@@ -1,0 +1,30 @@
+/**-----------------------------------------------------------------------------------------
+* Copyright © 2021 Progress Software Corporation. All rights reserved.
+* Licensed under commercial license. See LICENSE.md in the project root for more information
+*-------------------------------------------------------------------------------------------*/
+import * as i0 from "@angular/core";
+import * as i1 from "./pager.component";
+import * as i2 from "./pager-prev-buttons.component";
+import * as i3 from "./pager-next-buttons.component";
+import * as i4 from "./pager-numeric-buttons.component";
+import * as i5 from "./pager-input.component";
+import * as i6 from "./pager-info.component";
+import * as i7 from "./pager-page-sizes.component";
+import * as i8 from "./pager-template.directive";
+import * as i9 from "./pager-dropdown.directive";
+import * as i10 from "./pager-input.directive";
+import * as i11 from "@angular/common";
+import * as i12 from "@progress/kendo-angular-inputs";
+import * as i13 from "@progress/kendo-angular-label";
+import * as i14 from "@progress/kendo-angular-dropdowns";
+import * as i15 from "@progress/kendo-angular-common";
+import * as i16 from "../shared.module";
+/**
+ * @hidden
+ */
+export declare class PagerModule {
+    static exports(): any[];
+    static ɵfac: i0.ɵɵFactoryDeclaration<PagerModule, never>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<PagerModule, [typeof i1.PagerComponent, typeof i2.PagerPrevButtonsComponent, typeof i3.PagerNextButtonsComponent, typeof i4.PagerNumericButtonsComponent, typeof i5.PagerInputComponent, typeof i6.PagerInfoComponent, typeof i7.PagerPageSizesComponent, typeof i8.PagerTemplateDirective, typeof i9.PagerDropDownListDirective, typeof i10.PagerInputDirective], [typeof i11.CommonModule, typeof i12.InputsModule, typeof i13.LabelModule, typeof i14.DropDownsModule, typeof i15.ResizeSensorModule, typeof i16.SharedModule], [typeof i1.PagerComponent, typeof i2.PagerPrevButtonsComponent, typeof i3.PagerNextButtonsComponent, typeof i4.PagerNumericButtonsComponent, typeof i5.PagerInputComponent, typeof i6.PagerInfoComponent, typeof i7.PagerPageSizesComponent, typeof i8.PagerTemplateDirective, typeof i9.PagerDropDownListDirective, typeof i10.PagerInputDirective]>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<PagerModule>;
+}
