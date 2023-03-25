@@ -4,7 +4,7 @@ import { process } from '@progress/kendo-data-query';
 import { IProduct } from './product';
 //import { products } from './products';
 import { ProductsService } from "./products.service";
-import { Observable, Subscription, tap, of } from "rxjs";
+import { Observable, Subscription, tap, of, catchError, EMPTY } from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -13,9 +13,17 @@ import { Observable, Subscription, tap, of } from "rxjs";
 })
 export class AppComponent {
   title = 'angular-kendo-grid';
+  errorMessage = '';
+  products$ = this.productsService.products$
+    .pipe(
+      catchError(err => {
+        this.errorMessage = err;
+        return EMPTY;
+      })
+    );
 
   //products$: Observable<IProduct[]> = new Observable([]);
-  products$: Observable<IProduct[]> = this.productsService.getProducts();
+  //products$: Observable<IProduct[]> = this.productsService.getProducts();
 
   constructor(private productsService: ProductsService) {
     //this.products$ = this.productsService.getProducts();

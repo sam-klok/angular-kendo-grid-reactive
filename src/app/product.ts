@@ -11,6 +11,6 @@ export interface IProduct {
     UnitsOnOrder: number;
     ReorderLevel: number;
     Discontinued: boolean;
-    Category: ICategory;
+    //Category: ICategory;
     FirstOrderedOn: Date;
   }

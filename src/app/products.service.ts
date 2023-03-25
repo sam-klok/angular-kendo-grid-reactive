@@ -1,24 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
-import { catchError, tap } from "rxjs"
-//import { catchError, tap } from "rxjs-compat"
+import { catchError, tap, map } from "rxjs"
 import { IProduct } from './product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  private productUrl = 'products.json';
+  private productUrl = 'api/products/products2.json';
 
   constructor(private http: HttpClient) { }
 
-  getProducts(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(this.productUrl).pipe(
-      tap(data => console.log('All', JSON.stringify(data))),
+  products$ = this.http.get<IProduct[]>(this.productUrl)
+    .pipe(
+      map(products =>
+        products.map(product => ({
+          ...product,
+          //price: product.price ? product.price * 1.5 : 0,
+          searchKey: [product.ProductName]
+        } as IProduct))),
+      tap(data => console.log('Products: ', JSON.stringify(data))),
       catchError(this.handleError)
-    );
-  }
+    );  
+
+  // getProducts(): Observable<IProduct[]> {
+  //   return this.http.get<IProduct[]>(this.productUrl).pipe(
+  //     tap(data => console.log('All', JSON.stringify(data))),
+  //     catchError(this.handleError)
+  //   );
+  // }
 
   private handleError(err: HttpErrorResponse) {
     // in a real world app, we may send the server to some remote logging infrastructure

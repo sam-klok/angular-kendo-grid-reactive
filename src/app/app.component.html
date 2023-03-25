@@ -1,27 +1,35 @@
 <ng-container *ngIf="{products: products$|async} as data">
-<!-- <kendo-grid
-  [kendoGridBinding]="data.products"
-  [height]="400"
-  [pageable]="true"
-  [pageSize]="10"
->
-  <ng-template kendoGridToolbarTemplate>
-    <button type="button" kendoGridExcelCommand icon="file-excel">
-      Export to Excel
-    </button>
-  </ng-template>
-  <kendo-grid-column field="ProductID" title="Product ID" [width]="200"></kendo-grid-column>
-  <kendo-grid-column field="ProductName" title="Product Name"></kendo-grid-column>
-  <kendo-grid-column
-    field="Category.CategoryName"
-    title="Category"
-    [hidden]="true"
+  <div>{{data.products | json}}</div>
+
+  <!-- <kendo-grid
+    [kendoGridBinding]="data.products"
+    [height]="400"
+    [pageable]="true"
+    [pageSize]="10"
   >
-  </kendo-grid-column>
-   <kendo-grid-excel
-    fileName="Products.xlsx"
-    [fetchData]="allData"
-  ></kendo-grid-excel> 
-</kendo-grid> -->
-   products | json
+    <ng-template kendoGridToolbarTemplate>
+      <button type="button" kendoGridExcelCommand icon="file-excel">
+        Export to Excel
+      </button>
+    </ng-template>
+    <kendo-grid-column field="ProductID" title="Product ID" [width]="200"></kendo-grid-column>
+    <kendo-grid-column field="ProductName" title="Product Name"></kendo-grid-column>
+    <kendo-grid-column
+      field="Category.CategoryName"
+      title="Category"
+      [hidden]="true"
+    >
+    </kendo-grid-column>
+  </kendo-grid> -->
+
+    <!-- <kendo-grid-excel
+      fileName="Products.xlsx"
+      [fetchData]="allData"
+    ></kendo-grid-excel>  -->
+
+  <div class="alert alert-danger"
+      *ngIf="errorMessage">
+    {{ errorMessage | json }}
+  </div>
+
 </ng-container>
