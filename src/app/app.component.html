@@ -1,7 +1,7 @@
-<kendo-grid
-  [kendoGridBinding]="products"
+<ng-container *ngIf="{products: products$|async} as data">
+<!-- <kendo-grid
+  [kendoGridBinding]="data.products"
   [height]="400"
-  [group]="group"
   [pageable]="true"
   [pageSize]="10"
 >
@@ -18,8 +18,10 @@
     [hidden]="true"
   >
   </kendo-grid-column>
-  <!-- <kendo-grid-excel
+   <kendo-grid-excel
     fileName="Products.xlsx"
     [fetchData]="allData"
-  ></kendo-grid-excel> -->
-</kendo-grid>
+  ></kendo-grid-excel> 
+</kendo-grid> -->
+   products | json
+</ng-container>

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { GridModule, ExcelModule } from '@progress/kendo-angular-grid';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExcelExportModule } from '@progress/kendo-angular-excel-export';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -20,7 +20,8 @@ import { ExcelExportModule } from '@progress/kendo-angular-excel-export';
     GridModule,
     BrowserAnimationsModule,
     ExcelExportModule,
-    ExcelModule
+    ExcelModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

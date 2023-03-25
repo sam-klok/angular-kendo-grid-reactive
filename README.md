@@ -19,11 +19,18 @@ https://www.telerik.com/kendo-angular-ui/components/excel-export/
 1. Add products service
 >ng g s products
 
-2. installing RxJS
+2. install Angular v13.3.10
+locally     >npm install @angular/cli@13.3.10
+or globally >npm install -g @angular/cli@13.3.10
+
+3. installing RxJS
 >npm install rxjs
 >npm i rxjs-compat
 
 Based on tutorial: C:\Repos\pluralsight-angular-2-getting-started-Deborah-Kurata\11\demos\demo\APM
+
+4. add folder api to web server by editing angular.json
+https://stackoverflow.com/questions/44646504/how-to-serve-static-directory-from-ng-serve
 
 2. Add products.json file (kind of API) with json array of products [{},{},..]
 
