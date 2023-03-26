@@ -1,7 +1,6 @@
 <ng-container *ngIf="{products: products$|async} as data">
-  <div>{{data.products | json}}</div>
 
-  <!-- <kendo-grid
+  <kendo-grid
     [kendoGridBinding]="data.products"
     [height]="400"
     [pageable]="true"
@@ -20,16 +19,21 @@
       [hidden]="true"
     >
     </kendo-grid-column>
-  </kendo-grid> -->
+  </kendo-grid>
 
     <!-- <kendo-grid-excel
       fileName="Products.xlsx"
       [fetchData]="allData"
     ></kendo-grid-excel>  -->
 
+  <br/>
   <div class="alert alert-danger"
       *ngIf="errorMessage">
     {{ errorMessage | json }}
   </div>
+
+  <h5>Data from parsed http request on file product2.json</h5>
+  <div>{{data.products | json}}</div>
+
 
 </ng-container>
