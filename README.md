@@ -57,3 +57,12 @@ The package that you are trying to add does not support schematics. You can try 
 
 and add ExcelModule to import in modules.ts:
 import { GridModule, ExcelModule } from '@progress/kendo-angular-grid';
+
+
+=============== Some tools, Q&A
+1. JSON formatter
+https://jsonformatter.org/
+
+2. When binding data to kendo-grid got error Type 'T[] | null' is not assignable to type 'any[]' in Angular app - bug fix [kendoGridBinding]="data.products || []".
+Based on my Stack Overflow question:
+https://stackoverflow.com/questions/75848650/when-binding-data-to-kendo-grid-got-error-type-t-null-is-not-assignable-to

@@ -1,7 +1,7 @@
 <ng-container *ngIf="{products: products$|async} as data">
 
   <kendo-grid
-    [kendoGridBinding]="data.products"
+    [kendoGridBinding]="data.products || []"
     [height]="400"
     [pageable]="true"
     [pageSize]="10"
