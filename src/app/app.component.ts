@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { ExcelExportData } from '@progress/kendo-angular-excel-export';
-import { process } from '@progress/kendo-data-query';
 import { IProduct } from './product';
-//import { products } from './products';
 import { ProductsService } from "./products.service";
 import { Observable, Subscription, tap, of, catchError, EMPTY } from "rxjs";
+import { process } from '@progress/kendo-data-query';
+import { ExcelExportData } from '@progress/kendo-angular-excel-export';
 
 @Component({
   selector: 'app-root',
@@ -22,11 +21,34 @@ export class AppComponent {
       })
     );
 
-  //products$: Observable<IProduct[]> = new Observable([]);
-  //products$: Observable<IProduct[]> = this.productsService.getProducts();
+  public group: { field: string }[] = [
+    {
+      field: 'Category.CategoryName',
+    },
+  ];
+
+  
+  // allData$ = this.productsService.products$
+  //   .pipe(
+  //   );
+
+  // this.allData = this.allData.bind(this);
+
+  // public allData(): ExcelExportData {
+  //   const result: ExcelExportData = {
+  //     data: process(sampleProducts, {
+  //       group: this.group,
+  //       sort: [{ field: 'ProductID', dir: 'asc' }],
+  //     }).data,
+  //     group: this.group,
+  //   };
+
+  //   return result;
+  // }
+
+  
 
   constructor(private productsService: ProductsService) {
-    //this.products$ = this.productsService.getProducts();
   }
 
   ngOnInit(): void {
