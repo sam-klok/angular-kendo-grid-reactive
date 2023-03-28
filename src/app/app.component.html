@@ -1,4 +1,4 @@
-<ng-container *ngIf="{products: products$|async, allData: allData$|async} as data">
+<ng-container *ngIf="{products: products$|async, allData: excelExportData$|async} as data">
 
   <kendo-grid
     [kendoGridBinding]="data.products || []"
@@ -21,7 +21,7 @@
     </kendo-grid-column>
     <kendo-grid-excel
       fileName="Products.xlsx"
-      [fetchData]="data.allData"
+      [fetchData]="excelData"
     ></kendo-grid-excel>   
   </kendo-grid>
 

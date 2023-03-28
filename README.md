@@ -66,3 +66,5 @@ https://jsonformatter.org/
 2. When binding data to kendo-grid got error Type 'T[] | null' is not assignable to type 'any[]' in Angular app - bug fix [kendoGridBinding]="data.products || []".
 Based on my Stack Overflow question:
 https://stackoverflow.com/questions/75848650/when-binding-data-to-kendo-grid-got-error-type-t-null-is-not-assignable-to
+
+3. See exported file Products.xlsx and some screens in the roor.

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IProduct } from './product';
 import { ProductsService } from "./products.service";
-import { Observable, Subscription, tap, of, catchError, EMPTY } from "rxjs";
+import { Observable, Subscription, tap, of, catchError, EMPTY, map } from "rxjs";
 import { process } from '@progress/kendo-data-query';
 import { ExcelExportData } from '@progress/kendo-angular-excel-export';
 
@@ -21,6 +21,22 @@ export class AppComponent {
       })
     );
 
+  // how to write it properly to mimic excelData below?
+  excelExportData$ = this.productsService.products$
+  .pipe(
+    catchError(err => {
+      this.errorMessage = err;
+      return EMPTY;
+    })
+  );
+
+  public excelData = ():Observable<ExcelExportData> => {
+    return this.productsService.products$
+      .pipe(
+        map( result => <ExcelExportData>{data: result} )
+      )
+  }
+  
   public group: { field: string }[] = [
     {
       field: 'Category.CategoryName',
