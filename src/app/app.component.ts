@@ -13,6 +13,14 @@ import { ExcelExportData } from '@progress/kendo-angular-excel-export';
 export class AppComponent {
   title = 'angular-kendo-grid';
   errorMessage = '';
+  emptyExcelExportData = {} as ExcelExportData;
+
+  public group: { field: string }[] = [
+    {
+      field: 'Category.CategoryName',
+    },
+  ];
+
   products$ = this.productsService.products$
     .pipe(
       catchError(err => {
@@ -24,45 +32,45 @@ export class AppComponent {
   // how to write it properly to mimic excelData below?
   excelExportData$ = this.productsService.products$
   .pipe(
+    map(
+        result=> <ExcelExportData>
+          { data: result,
+            group: this.group }
+      ),
     catchError(err => {
       this.errorMessage = err;
       return EMPTY;
-    })
-  );
+    }));
+  
 
-  public excelData = ():Observable<ExcelExportData> => {
+  // Export to Excel with groouping by Category Name
+  public excelData = () : Observable<ExcelExportData> => {
     return this.productsService.products$
       .pipe(
-        map( result => <ExcelExportData>{data: result} )
+        map( result => <ExcelExportData>
+          { data: process(result, {
+              group: this.group,
+              sort: [{ field: 'ProductID', dir: 'asc' }],
+            }).data,
+            group: this.group})
       )
   }
-  
-  public group: { field: string }[] = [
-    {
-      field: 'Category.CategoryName',
-    },
-  ];
 
-  
-  // allData$ = this.productsService.products$
-  //   .pipe(
-  //   );
+  // Export to Excel with no grouping (working)
+  // public excelData = ():Observable<ExcelExportData> => {
+  //   return this.productsService.products$
+  //     .pipe(
+  //       map( result => <ExcelExportData>
+  //         { data: result,
+  //           group: this.group})
+  //     )
+  // }  
 
-  // this.allData = this.allData.bind(this);
 
-  // public allData(): ExcelExportData {
-  //   const result: ExcelExportData = {
-  //     data: process(sampleProducts, {
-  //       group: this.group,
-  //       sort: [{ field: 'ProductID', dir: 'asc' }],
-  //     }).data,
-  //     group: this.group,
-  //   };
-
-  //   return result;
+  // constructor() {
+  //   this.allData = this.allData.bind(this);
   // }
 
-  
 
   constructor(private productsService: ProductsService) {
   }
