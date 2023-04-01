@@ -15,12 +15,6 @@ export class AppComponent {
   errorMessage = '';
   emptyExcelExportData = {} as ExcelExportData;
 
-  public group: { field: string }[] = [
-    {
-      field: 'Category.CategoryName',
-    },
-  ];
-
   products$ = this.productsService.products$
     .pipe(
       catchError(err => {
@@ -29,30 +23,21 @@ export class AppComponent {
       })
     );
 
-  // how to write it properly to mimic excelData below?
-  excelExportData$ = this.productsService.products$
-  .pipe(
-    map(
-        result=> <ExcelExportData>
-          { data: result,
-            group: this.group }
-      ),
-    catchError(err => {
-      this.errorMessage = err;
-      return EMPTY;
-    }));
-  
-
   // Export to Excel with groouping by Category Name
-  public excelData = () : Observable<ExcelExportData> => {
+  excelExportData = () : Observable<ExcelExportData> => { 
     return this.productsService.products$
       .pipe(
-        map( result => <ExcelExportData>
-          { data: process(result, {
-              group: this.group,
-              sort: [{ field: 'ProductID', dir: 'asc' }],
+        map( result => <ExcelExportData> { 
+          data: process(
+            result, 
+            { group: [{ field: 'Category.CategoryName' }],
+              sort:  [{ field: 'ProductID', dir: 'asc' }],
             }).data,
-            group: this.group})
+          group: [{ field: 'Category.CategoryName' }]}),
+        catchError(err => {
+          this.errorMessage = err;
+          return EMPTY;
+        })
       )
   }
 
@@ -62,7 +47,7 @@ export class AppComponent {
   //     .pipe(
   //       map( result => <ExcelExportData>
   //         { data: result,
-  //           group: this.group})
+  //           group: [{ field: 'Category.CategoryName' }]})
   //     )
   // }  
 
@@ -70,7 +55,6 @@ export class AppComponent {
   // constructor() {
   //   this.allData = this.allData.bind(this);
   // }
-
 
   constructor(private productsService: ProductsService) {
   }
